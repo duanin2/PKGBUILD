@@ -1,5 +1,5 @@
-pkgbase = eww-git
-	pkgdesc = ElKowar's wacky widgets
+pkgbase = eww-systray-git
+	pkgdesc = ElKowar's wacky widgets (systray pull request)
 	pkgver = 0.4.0.r28.ge762068
 	pkgrel = 2
 	url = https://github.com/elkowar/eww
@@ -17,11 +17,11 @@ pkgbase = eww-git
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	b2sums = SKIP
 
-pkgname = eww-x11-git
-	pkgdesc = ElKowar's wacky widgets (X11 backend)
+pkgname = eww-x11-systray-git
+	pkgdesc = ElKowar's wacky widgets (systray pull request) (X11 backend)
 	depends = gtk3
 
-pkgname = eww-wayland-git
-	pkgdesc = ElKowar's wacky widgets (Wayland backend)
+pkgname = eww-wayland-systray-git
+	pkgdesc = ElKowar's wacky widgets (systray pull request) (Wayland backend)
 	depends = gtk3
 	depends = gtk-layer-shell
