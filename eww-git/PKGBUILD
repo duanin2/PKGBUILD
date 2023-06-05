@@ -8,7 +8,7 @@ pkgver=0.4.0.r28.ge762068
 pkgrel=3
 pkgdesc="ElKowar's wacky widgets (systray pull request)"
 arch=(x86_64)
-url="https://github.com/elkowar/$_pkgname"
+url="https://github.com/ralismark/$_pkgname"
 license=(MIT)
 depends=(gtk3 gtk-layer-shell)
 makedepends=(cargo-nightly git)
@@ -16,10 +16,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$pkgbase.install
 source=("git+$url.git?signed"
-	"https://github.com/elkowar/eww/pull/743.patch"
 	"https://github.com/ralismark/eww/pull/2.patch")
 b2sums=('SKIP'
-	'SKIP'
 	'SKIP')
 validpgpkeys=(
 	'B558974128820CB473BD9807E321AD71B1D1F27F' # Leon Kowarschick <5300871+elkowar@users.noreply.github.com>
@@ -28,7 +26,6 @@ validpgpkeys=(
 
 prepare() {
 	cd $_pkgname
-	patch -p1 < ../743.patch
 	patch -p1 < ../2.patch
 	export RUSTUP_TOOLCHAIN=nightly
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
@@ -43,10 +40,10 @@ build() {
 	export RUSTUP_TOOLCHAIN=nightly
 
 	export CARGO_TARGET_DIR=target_x11
-	cargo build --frozen --release --no-default-features --features=x11
+	cargo +nightly build --frozen --release --no-default-features --features=x11
 
 	export CARGO_TARGET_DIR=target_wayland
-	cargo build --frozen --release --no-default-features --features=wayland
+	cargo +nightly build --frozen --release --no-default-features --features=wayland
 }
 
 _pkg() {
