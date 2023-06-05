@@ -2,7 +2,7 @@
 # Contributor: Atif Chowdhury <iftakhar dot awal at gmail dot com>
 
 _pkgname=eww
-pkgbase="$_pkgname-systray-git"
+pkgbase="$_pkgname-git"
 pkgname=($_pkgname-{x11,wayland}-systray-git)
 pkgver=0.4.0.r28.ge762068
 pkgrel=2
