@@ -53,14 +53,14 @@ _pkg() {
 	cp -r examples/eww-bar "$pkgdir/etc/xdg/$_pkgname/"
 }
 
-package_eww-wayland-git() {
+package_eww-wayland-systray-git() {
 	pkgdesc+=" (Wayland backend)"
 	depends=(gtk3 gtk-layer-shell)
 	_pkg
 	install -Dm755 target_wayland/release/$_pkgname -t "$pkgdir/usr/bin/"
 }
 
-package_eww-x11-git() {
+package_eww-x11-systray-git() {
 	pkgdesc+=" (X11 backend)"
 	depends=(gtk3)
 	_pkg
