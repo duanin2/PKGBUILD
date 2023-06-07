@@ -1,0 +1,35 @@
+# Maintainer: éclairevoyant
+
+_pkgname=eww
+pkgname="$_pkgname-wayland-systray-git"
+pkgver=0.4.0
+pkgrel=1.2
+pkgdesc="ElKowar's wacky widgets (Wayland build)"
+arch=('x86_64')
+url="https://github.com/ralismark/eww"
+license=('MIT')
+depends=(gtk3 gtk-layer-shell glib2 gdk-pixbuf2 librsvg libdbusmenu-glib libdbusmenu-gtk3)
+makedepends=(git rustup)
+optdepends=('haskell-status-notifier-item: StatusNotifierItem implementation')
+provides=("$_pkgname=${pkgver/.r*/}")
+conflicts=("eww")
+source=("git+$url.git#branch=tray-3")
+b2sums=('SKIP')
+
+options=(!strip debug)
+
+build() {
+	cd $_pkgname
+	rustup toolchain install nightly
+	cargo +nightly build --release --no-default-features --features=wayland
+}
+
+package() {
+	cd $_pkgname
+
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -Dm755 target/release/$_pkgname -t "$pkgdir/usr/bin/"
+
+	install -d "$pkgdir/etc/xdg/$_pkgname/"
+	cp -r examples/eww-bar "$pkgdir/etc/xdg/$_pkgname/"
+}
