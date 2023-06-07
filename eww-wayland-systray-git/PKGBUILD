@@ -13,13 +13,16 @@ makedepends=(git rustup)
 optdepends=('haskell-status-notifier-item: StatusNotifierItem implementation')
 provides=("$_pkgname=${pkgver/.r*/}")
 conflicts=("eww")
-source=("git+$url.git#branch=tray-3")
-b2sums=('SKIP')
+source=("git+$url.git#branch=tray-3"
+	"$url/pull/2.patch")
+b2sums=('SKIP'
+	'SKIP')
 
 options=(!strip debug)
 
 build() {
 	cd $_pkgname
+	patch -p1 < ../2.patch
 	rustup toolchain install nightly
 	cargo +nightly build --release --no-default-features --features=wayland
 }
