@@ -3,7 +3,7 @@
 _pkgname=eww
 pkgname="$_pkgname-wayland-systray-git"
 pkgver=0.4.0
-pkgrel=1.4
+pkgrel=1.5
 pkgdesc="ElKowar's wacky widgets (Wayland build)"
 arch=('x86_64')
 url="https://github.com/ralismark/eww"
