@@ -22,7 +22,7 @@ options=(!strip debug)
 
 build() {
 	cd $_pkgname
-	#patch -p1 < ../2.patch
+	patch -p1 < ../2.patch
 	rustup toolchain install nightly
 	cargo build --release --no-default-features --features=wayland
 }
