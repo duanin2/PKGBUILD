@@ -3,7 +3,7 @@
 _pkgname=eww
 pkgname="$_pkgname-wayland-systray-git"
 pkgver=0.4.0
-pkgrel=1.3
+pkgrel=1.5
 pkgdesc="ElKowar's wacky widgets (Wayland build)"
 arch=('x86_64')
 url="https://github.com/ralismark/eww"
@@ -24,7 +24,7 @@ build() {
 	cd $_pkgname
 	patch -p1 < ../2.patch
 	rustup toolchain install nightly
-	cargo +nightly build --release --no-default-features --features=wayland
+	cargo build --release --no-default-features --features=wayland
 }
 
 package() {
