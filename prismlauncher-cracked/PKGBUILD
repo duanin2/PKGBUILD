@@ -33,7 +33,7 @@ sha256sums=(
 prepare() {
   cd "PrismLauncher-${pkgver}"
 
-  patch --strip=1 --input=${srcdir}/5fcb9d29f6d28afff488621c95e8b1bb49f93e30.patch
+  patch --input=${srcdir}/5fcb9d29f6d28afff488621c95e8b1bb49f93e30.patch
 }
 
 build() {
